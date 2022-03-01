@@ -1,0 +1,6 @@
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <span class="navbar-text">
+      <b>안녕하세요. {{session['name']}}님</b>
+    </span>
+    <input style="margin-right:3px;" class="btn btn-primary" type="button" value="LOGOUT" onclick="location.href='{{url_for('logout')}}'"/>
+</nav>

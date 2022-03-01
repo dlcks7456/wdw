@@ -1,0 +1,79 @@
+<div class="setrecord">RECORD : {{datas['record']}}</div>
+<br/>
+<input type="hidden" name="record" value="{{datas['record']}}">
+<div class="datediv">응답 날짜 : <input type="date" name="answerdate" value="{{datas['answerdate']}}"></div>
+<div class="question">
+    <div class="title">이름</div>
+    <div class="answer">
+        <input type="text" name="pname" class="form-control" value="{{datas['pname']}}" required />
+    </div>
+</div><br/>
+
+<div class="question">
+    <div class="title">포지션</div>
+    <div class="answer">
+        <select class="form-select" aria-label="Default select example" name="position" required>
+          <option value="" {% if datas['position']==None %}selected{% endif %}>선택</option>
+          <option value="1" {% if datas['position']==1 %}selected{% endif %}>퍼포먼스 마케터</option>
+          <option value="2" {% if datas['position']==2 %}selected{% endif %}>그로스 매니저</option>
+          <option value="3" {% if datas['position']==3 %}selected{% endif %}>콘텐츠 마케터</option>
+          <option value="4" {% if datas['position']==4 %}selected{% endif %}>브랜드 마케터</option>
+          <option value="5" {% if datas['position']==5 %}selected{% endif %}>디자이너</option>
+        </select>
+    </div>
+</div><br/>
+
+<div class="question">
+    <div class="title">구분</div>
+    <div class="answer">
+        <select class="form-select" aria-label="Default select example" name="career" required>
+          <option value="" {% if datas['career']==None %}selected{% endif %}>선택</option>
+          <option value="1" {% if datas['career']==1 %}selected{% endif %}>인턴</option>
+          <option value="2" {% if datas['career']==2 %}selected{% endif %}>신입</option>
+          <option value="3" {% if datas['career']==3 %}selected{% endif %}>1~3년차</option>
+          <option value="4" {% if datas['career']==4 %}selected{% endif %}>4~5년차</option>
+          <option value="5" {% if datas['career']==5 %}selected{% endif %}>6년차 이상</option>
+        </select>
+    </div>
+</div><br/>
+
+<div class="question">
+    <div class="title">성별</div>
+    <div class="answer">
+        <div class="btn-group-vertical" role="group" aria-label="Basic radio toggle button group" style="width: 80%;">
+            <input type="radio" class="btn-check" name="gender" id="gender_1" autocomplete="off" value="1" required {% if datas['gender']==1 %} checked {% endif %}>
+            <label class="btn btn-outline-primary" for="gender_1">남</label>
+            <input type="radio" class="btn-check" name="gender" id="gender_2" autocomplete="off" value="2"  {% if datas['gender']==2 %} checked {% endif %}>
+            <label class="btn btn-outline-primary" for="gender_2">여</label>
+        </div>
+    </div>
+</div><br/>
+<div class="question">
+    <div class="title">나이</div>
+    <div class="answer">
+        <input type="number" class="form-control" name="age" onkeyup="rangechk(this.value,'.ageerr')" min=0 max=100 value="{{datas['age']}}" required/>
+        <span class="errmsg ageerr">연령 확인 필요<span>
+    </div>
+</div><br/>
+<div class="question">
+    <div class="title">재직여부</div>
+    <div class="answer">
+        <div class="btn-group-vertical" role="group" aria-label="Basic radio toggle button group" style="width: 80%;">
+            <input type="radio" class="btn-check" name="work" id="work_1" autocomplete="off" value="1" required {% if datas['work']==1 %} checked {% endif %}>
+            <label class="btn btn-outline-primary" for="work_1">휴직</label>
+            <input type="radio" class="btn-check" name="work" id="work_2" autocomplete="off" value="2"  {% if datas['work']==2 %} checked {% endif %}>
+            <label class="btn btn-outline-primary" for="work_2">재직</label>
+            <input type="radio" class="btn-check" name="work" id="work_99" autocomplete="off" value="99"  {% if datas['work']==99 %} checked {% endif %}>
+            <label class="btn btn-outline-primary" for="work_99">모름</label>
+        </div>
+    </div>
+</div><br/>
+
+<div class="question">
+    <div class="title">Check Point</div>
+    <div class="answer">
+        <input type="text" name="chk_point1" class="form-control" value="{{datas['chk_point1']}}"/>
+        <input type="text" name="chk_point2" class="form-control" value="{{datas['chk_point2']}}"/>
+        <input type="text" name="chk_point3" class="form-control" value="{{datas['chk_point3']}}"/>
+    </div>
+</div><br/>

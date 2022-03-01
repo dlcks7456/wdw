@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>면접 전 평가</title>
+    {% include 'head.html' %}
+</head>
+
+<body>
+{% include 'nav.html' %}
+    <div class="inputForm">
+        <form action="{{url_for('result', pagetype='editdata')}}" method="POST">
+            {% include 'formbase.html' %}
+            <br/>
+            <div style="padding: 5px;">
+                <input type="submit" value="제출" class="btn btn-large btn-primary"/>
+                <input type="button" value="취소" class="btn btn-large btn-danger" onclick="location.href='{{url_for('datacheck')}}'"/>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

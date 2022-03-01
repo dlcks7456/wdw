@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>입력 완료</title>
+    {% include 'head.html' %}
+</head>
+
+<body>
+    <div class="inputForm">
+        <div><img src="https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/100/26e07f/external-check-multimedia-kiranshastry-gradient-kiranshastry.png"/></div>
+        <h2>저장 완료!</h2>
+        <div>
+            <input type="button" class='btn btn-large btn-primary' onclick="location.href='{% if pagetype=='postquestion' %}{{url_for('datacheck')}}{%elif pagetype=='editdata' or pagetype=='final' %}{{url_for('datacheck')}}{% else %}{{url_for('home')}}{% endif %}'" value="{% if pagetype=='editdata' or pagetype=='final' %}응답 확인{% else %}홈으로 돌아가기{% endif %}"/>
+        </div>
+    </div>
+</body>
+
+</html>

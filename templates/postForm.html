@@ -1,0 +1,25 @@
+<input type="hidden" name="record" value="{{datas['record']}}">
+<div class="question">
+    <div class="title">이름</div>
+    <div class="answer">{{datas['pname']}}</div>
+</div><br/>
+{% for qid, attr in Qdict.items() %}
+<div class="big_title">{{attr['big_title']}}</div>
+    <br/>
+    {% for num, label in attr['rows'].items() %}
+    <div class="question">
+        <div class="title">{{label}}</div>
+        <div class="answer">
+            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                {% for i in range(1,6) %}
+                    <input type="radio" class="btn-check" name="{{qid}}_{{num}}" id="{{qid}}_{{num}}_{{i}}" autocomplete="off" value="{{i}}" required {% if datas['%s_%s'%(qid, num)]==i %}checked{% endif %}>
+                    <label class="btn btn-outline-primary" for="{{qid}}_{{num}}_{{i}}">({{i}})</label>
+                {% endfor %}
+            </div>
+        </div>
+        <br/>
+    {% endfor %}
+</div><br/>
+<hr/>
+<br/>
+{% endfor %}

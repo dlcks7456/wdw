@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>HOME</title>
+    {% include 'head.html' %}
+    <link href='https://fonts.googleapis.com/css?family=Shizuru' rel='stylesheet' type='text/css'>
+</head>
+<body>
+{% include 'nav.html' %}
+    <div class="inputForm">
+        <h1 class="mb-3">Sunny HR</h1>
+        <div style="width:100%;">
+            <img src="{{url_for('static',filename='img/wonderwall.png')}}" style="width:100%;"/>
+        </div>
+        <div>면접원 평가</div>
+        <table style="margin: 0 auto;">
+            <tr>
+                <td><input type="button" onclick="location.href='/assessment'" class="btn btn-primary" value="정보 입력"/></td>
+                <td><input type="button" onclick="location.href='/datacheck'" class="btn btn-info" value="응답 확인"/></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

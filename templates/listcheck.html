@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>응답 확인</title>
+    {% include 'head.html' %}
+</head>
+
+<body>
+{% include 'nav.html' %}
+    <div class="showForm">
+        <div style="padding:5px">
+            <input type="button" class='btn btn-large btn-primary' onclick="location.href='{{url_for('editdata', record = datas['record'])}}'" value="응답 수정"/>
+            <input type="button" class='btn btn-large btn-danger' onclick="delete_check('{{url_for('deletedata', record = datas['record'])}}');" value="응답 삭제"/></div>
+        <div class="datediv">응답 날짜 : <span class="answer">{{datas['answerdate']}}</span></div>
+        <br/>
+            <div class="question">
+                <div class="title">이름</div>
+                <div class="answer">{{datas['pname']}}</div>
+            </div><br/>
+            <div class="question">
+                <div class="title">포지션</div>
+                <div class="answer">{{datas['position']}}</div>
+            </div><br/>
+            <div class="question">
+                <div class="title">성별</div>
+                <div class="answer">{{'남자' if datas['gender']==1 else '여자' if datas['gender']==2 else datas['gender']}}</div>
+            </div><br/>
+            <div class="question">
+                <div class="title">나이</div>
+                <div class="answer">{{datas['age']}}</div>
+            </div><br/>
+            <div class="question">
+                <div class="title">Q1. 평가1 (7점 척도)</div>
+                <div class="answer">{{datas['Q1']}}</div>
+            </div><br/>
+            <div class="question">
+                <div class="title">Q2. 평가2 (7점 척도)</div>
+                <div class="answer">{{datas['Q2']}}</div>
+            </div><br/>
+            <div class="question">
+                <div class="title">Q3. 평가3 (7점 척도)</div>
+                <div class="answer">{{datas['Q3']}}</div>
+            </div><br/>
+            <div class="question">
+                <div class="title">Q4. 평가4 (7점 척도)</div>
+                <div class="answer">{{datas['Q4']}}</div>
+            </div><br/>
+            <div class="question">
+                <div class="title">Q5. 평가5 (7점 척도)</div>
+                <div class="answer">{{datas['Q5']}}</div>
+            </div><br/>
+            <div class="question">
+                <div class="title">총 평가</div>
+                <div class="answer">{{datas['review']}}</div>
+            </div>
+            <br/>
+    <div><input type="button" class='btn btn-large btn-primary' onclick="location.href='{{url_for('home')}}'" value="홈으로 돌아가기"/></div><br/>
+    <div><input type="button" class='btn btn-large btn-info' onclick="location.href='{{url_for('datacheck')}}'" value="리스트로 돌아가기"/></div>
+    </div>
+</body>
+
+</html>

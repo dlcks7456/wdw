@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>LOGIN</title>
+    {% include 'head.html' %}
+    <link href='https://fonts.googleapis.com/css?family=Shizuru' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div class="inputForm">
+        <h1 class="mb-3">Sunny HR</h1>
+        <div style="width:100%;">
+            <img src="{{url_for('static',filename='img/wonderwall.png')}}" style="width:100%;"/>
+        </div>
+        <table style="margin: 0 auto;">
+            {% if err==True %}<div style="font-size: 13px; color: red;">등록되지 않은 이메일 입니다.</div>{% endif %}
+            <form action="{{url_for('login')}}" method="POST">
+            <div class="form-group">
+                <label for="loginemail">Email address</label>
+                <input type="email" class="form-control" id="loginemail" placeholder="Enter email" name="email" required>
+            </div>
+            <br/>
+            <input type="submit" class="btn btn-primary" value="LOGIN"/>
+            </form>
+        </table>
+    </div>
+</body>
+
+</html>

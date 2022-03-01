@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Data 확인</title>
+    {% include 'head.html' %}
+</head>
+
+<body>
+{% include 'nav.html' %}
+    <div class="checkpage">
+        <form  method="POST">
+            <div style="padding:5px;">
+                <div style="float:left;">
+                    <input type="button" class='btn btn-large btn-primary' onclick="location.href='{{url_for('home')}}'" value="홈으로 돌아가기"/>
+                    <input type="button" class='btn btn-large btn-primary' value="다운로드" onclick="location.href='{{url_for('download')}}'"/>
+                    <input type="submit" formaction="{{url_for('compareboard')}}" class='btn btn-large btn-primary' name="spiderchart" value="비교 분석" onclick="return comparespider()">
+                </div>
+            </div>
+                <div style="float:right;">
+                        <input type="submit" formaction="{{url_for('datacheck')}}" style="float:right;" class='btn btn-large btn-danger' name="deleterow" value="응답 삭제">
+                </div>
+                <table class="datatable table">
+                    <thead>
+                        <tr>
+                            <th scope="col"><input type="checkbox" name="checkdata_all"/></th>
+                            <th scope="col">Record</th>
+                            <th scope="col">status</th>
+                            <th scope="col">사전 정보</th>
+                            <th scope="col">면접 후 평가</th>
+                            <th scope="col">지원자 현황</th>
+                            <th scope="col">이름</th>
+                            <th scope="col">포지션</th>
+                            <th scope="col">성별</th>
+                            <th scope="col">총합 점수</th>
+                        </tr>
+                    </thead>
+                    {% for data in datas %}
+                        <tr {% if data['status']=='평가 완료' %}style="background-color: #ffeaea;"{% endif %}>
+                            <td><input type="checkbox" name="checkdata" id="checkdata_{{data['record']}}" value="{{data['record']}}"/></td>
+                            <th scope="row">{{data['record']}}</td>
+                            <td><b>{{data['status']}}</b></td>
+                            <td><a href="{{url_for('editdata', record = data['record'])}}">수정</a></td>
+                            <td><a href="{{url_for('postQuestion', record = data['record'])}}">{% if data['status']=='평가 완료' %}수정{% else %}<b>입력</b>{% endif %}</a></td>
+                            <td>{% if data['status']=='평가 완료' %}<a href="{{url_for('showboard', record=data['record'])}}"> {% if data['pass']=='합격' %}<font style="color:blue; font-weight: bold;">{{data['pass']}}</font> {% elif data['pass']=='불합격' %}<font style="color:red; font-weight: bold;">{{data['pass']}}</font> {% else %}{{data['pass']}}{% endif %}</a>{% else %}{{data['pass']}}{% endif %}</td>
+                            <td>{{data['pname']}}</td>
+                            <td>{{position_label[data['position']]}}</td>
+                            <td>{{'남자' if data['gender']==1 else '여자' if data['gender']==2 else data['gender']}}</td>
+                            <td>{% if data['status']=='평가 완료' %}<b>{{data['total']}}</b>{% else %}평가 필요{% endif %}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </form>
+        <br/>
+    </div>
+</body>
+
+</html>
